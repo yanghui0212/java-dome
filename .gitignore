@@ -20,6 +20,7 @@
 *.rar
 *.iml
 .idea
+.vertx
 .settings/
 **/target/
 **/dist/
