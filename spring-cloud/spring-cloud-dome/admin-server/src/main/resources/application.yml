@@ -1,0 +1,31 @@
+server:
+  port: 20000
+
+spring:
+  application:
+    name: boot-admin-server
+  security:
+    user:
+      name: admin
+      password: admin
+
+eureka:
+  instance:
+    appname: boot-admin-server
+    prefer-ip-address: true
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+      defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always

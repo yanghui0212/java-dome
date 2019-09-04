@@ -1,0 +1,18 @@
+server:
+  port: 18761
+spring:
+  application:
+    name: eureka-server
+  security:
+    user:
+      name: admin
+      password: admin
+eureka:
+  instance:
+    appname: eureka-server
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
+    register-with-eureka: false
+    fetch-registry: false

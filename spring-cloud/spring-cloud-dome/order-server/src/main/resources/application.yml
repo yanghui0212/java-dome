@@ -1,0 +1,27 @@
+server:
+  port: 48081
+
+spring:
+  application:
+    name: order-server
+
+eureka:
+  instance:
+    appname: order-server
+    prefer-ip-address: true
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+      defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
