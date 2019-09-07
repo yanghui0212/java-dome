@@ -1,17 +1,20 @@
 server:
-  port: 20000
-
+  port: 9393
 spring:
   application:
-    name: boot-admin-server
-  security:
-    user:
-      name: admin
-      password: admin
-
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/yanghui0212/config
+          username: yangqianghui1993@gmail.com
+          password: 123456qqWW@@
+          default-label: master
+          basedir: D:\\java\\config-repo
 eureka:
   instance:
-    appname: boot-admin-server
+    appname: config-server
     prefer-ip-address: true
     metadata-map:
       user.name: admin
