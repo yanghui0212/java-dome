@@ -29,7 +29,8 @@ public class TestController {
     }
 
     @GetMapping("/test/config")
-    public String testConfig() {
+    public String testConfig() throws InterruptedException {
+        Thread.sleep(10000L);
         return fromConfig;
     }
 }

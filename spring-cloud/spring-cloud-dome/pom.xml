@@ -20,6 +20,7 @@
         <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
         <spring-boot-admin.version>2.1.5</spring-boot-admin.version>
         <lombok.version>1.18.8</lombok.version>
+        <guava.version>23.0</guava.version>
     </properties>
 
     <modules>
@@ -28,6 +29,8 @@
         <module>admin-server</module>
         <module>order-server</module>
         <module>goods-server</module>
+        <module>zuul-server</module>
+        <module>gateway-server</module>
     </modules>
 
     <dependencyManagement>
@@ -50,6 +53,11 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

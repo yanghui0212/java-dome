@@ -1,0 +1,84 @@
+server:
+  port: 83
+
+spring:
+  application:
+    name: zuul-server
+  cloud:
+    config:
+      enabled: true
+      profile: test
+      label: master
+      discovery:
+        service-id: CONFIG-SERVER
+        enabled: true
+      fail-fast: true
+      retry:
+        max-attempts: 6
+        max-interval: 3000
+        initial-interval: 2000
+        multiplier: 1
+    loadbalancer:
+      retry:
+        enabled: true
+  rabbitmq:
+    addresses: 127.0.0.1:5672
+    username: guest
+    password: guest
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual #\u7B7E\u6536\u6A21\u5F0F \u624B\u52A8\u7B7E\u6536
+        max-concurrency: 10 #\u6700\u5927\u5E76\u53D1
+        concurrency: 5 #\u57FA\u672C\u5E76\u53D1
+        prefetch: 1 #\u9650\u6D41\u7B56\u7565\uFF0C\u540C\u4E00\u65F6\u95F4\u53EA\u67091\u6761\u6D88\u606F\u53D1\u9001\u8FC7\u6765\u6D88\u8D39
+    publisher-confirms: true
+    publisher-returns: true
+
+eureka:
+  instance:
+    appname: zuul-server
+    prefer-ip-address: true
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+      defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
+
+zuul:
+  routes:
+    api-order:
+      path: /api-order/**
+      serviceId: order-server
+      retryable: true
+    api-goods:
+      path: /api-goods/**
+      serviceId: goods-server
+      retryable: true
+  sensitive-headers:
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 10000
+hystrix:
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000
+  metrics:
+    polling-interval-ms:
+
+#\u8BF7\u6C42\u8D85\u65F6\u914D\u7F6E
+order-server:
+  ribbon:
+    ConnectTimeout: 6000 #\u5355\u4F4Dms,\u8BF7\u6C42\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
+    ReadTimeout: 6000 #\u5355\u4F4Dms,\u8BF7\u6C42\u5904\u7406\u7684\u8D85\u65F6\u65F6\u95F4
+
+goods-server:
+  ribbon:
+    ConnectTimeout: 6000 #\u5355\u4F4Dms,\u8BF7\u6C42\u8FDE\u63A5\u8D85\u65F6\u65F6\u95F4
+    ReadTimeout: 6000 #\u5355\u4F4Dms,\u8BF7\u6C42\u5904\u7406\u7684\u8D85\u65F6\u65F6\u95F4
