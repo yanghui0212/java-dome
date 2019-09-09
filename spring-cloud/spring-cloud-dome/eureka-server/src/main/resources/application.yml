@@ -16,3 +16,11 @@ eureka:
       defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
     register-with-eureka: false
     fetch-registry: false
+#日志配置
+logging:
+  level:
+    org.springframework.web: TRACE
+    org.springframework.boot: INFO
+  file: logs/${spring.application.name}.log
+  file.max-size: 100MB
+  file.max-history: 7

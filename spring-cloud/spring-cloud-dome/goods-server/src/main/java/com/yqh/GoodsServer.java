@@ -11,9 +11,10 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @SpringBootApplication
 @EnableDiscoveryClient
 @EnableHystrix
-public class RibbonServer {
+public class GoodsServer {
 
     public static void main(String[] args) {
-        SpringApplication.run(RibbonServer.class, args);
+        SpringApplication.run(GoodsServer.class, args);
     }
+
 }

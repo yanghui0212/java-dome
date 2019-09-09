@@ -20,7 +20,7 @@ public class TestService {
 
     @HystrixCommand(fallbackMethod = "testFallback")
     public List<String> test() {
-        return restTemplate.getForObject("http://order-server/order/test", List.class);
+        return restTemplate.getForObject("http://ORDER-SERVER/order/test", List.class);
     }
 
     public List<String> testFallback() {

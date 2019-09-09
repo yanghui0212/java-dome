@@ -1,7 +1,5 @@
 package com.yqh.config;
 
-import com.netflix.client.config.DefaultClientConfigImpl;
-import com.netflix.client.config.IClientConfig;
 import com.netflix.loadbalancer.IRule;
 import com.netflix.loadbalancer.RetryRule;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -11,7 +9,7 @@ import org.springframework.web.client.RestTemplate;
 
 /**
  * @author yangq
- * Create time in 2019-08-30 14:19
+ * Create time in 2019-09-09 09:33
  */
 @Configuration
 public class RibbonConfig {
@@ -19,14 +17,6 @@ public class RibbonConfig {
     @Bean
     public IRule ribbonRule() {
         return new RetryRule();
-    }
-
-    @Bean
-    public IClientConfig iClientConfig() {
-        DefaultClientConfigImpl config = new DefaultClientConfigImpl();
-
-
-        return config;
     }
 
     @Bean

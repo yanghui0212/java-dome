@@ -46,3 +46,12 @@ management:
   endpoint:
     health:
       show-details: always
+
+#日志配置
+logging:
+  level:
+    org.springframework.web: TRACE
+    org.springframework.boot: INFO
+  file: logs/${spring.application.name}.log
+  file.max-size: 100MB
+  file.max-history: 7

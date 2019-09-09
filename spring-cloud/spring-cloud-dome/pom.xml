@@ -24,11 +24,10 @@
 
     <modules>
         <module>eureka-server</module>
+        <module>config-server</module>
         <module>admin-server</module>
         <module>order-server</module>
-        <module>ribbon-server</module>
-        <module>feign-server</module>
-        <module>config-server</module>
+        <module>goods-server</module>
     </modules>
 
     <dependencyManagement>

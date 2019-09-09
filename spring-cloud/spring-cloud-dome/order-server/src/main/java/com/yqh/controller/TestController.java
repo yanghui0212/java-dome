@@ -1,6 +1,8 @@
 package com.yqh.controller;
 
-import com.google.common.collect.Lists;
+import com.yqh.config.TestConfig;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -13,10 +15,14 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/order")
+@RefreshScope
 public class TestController {
+
+    @Autowired
+    private TestConfig testConfig;
 
     @GetMapping("/test")
     public List<String> test() {
-        return Lists.newArrayList("ddd", "sss", "xxx");
+        return testConfig.getList();
     }
 }
