@@ -3,6 +3,7 @@ package com.yqh.config;
 import org.springframework.cloud.gateway.filter.ratelimit.KeyResolver;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import reactor.core.publisher.Mono;
 
 /**
@@ -12,8 +13,14 @@ import reactor.core.publisher.Mono;
 @Configuration
 public class GatewayConfig {
 
-    @Bean
+    @Bean(name = "ipKeyResolver")
+    @Primary
     public KeyResolver ipKeyResolver() {
         return exchange -> Mono.just(exchange.getRequest().getRemoteAddress().getHostName());
     }
+
+/*    @Bean(name = "pathResolver")
+    public KeyResolver pathResolver() {
+        return exchange -> Mono.just(exchange.getRequest().getURI().getPath());
+    }*/
 }
