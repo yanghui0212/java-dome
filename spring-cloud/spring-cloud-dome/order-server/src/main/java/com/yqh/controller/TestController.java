@@ -22,7 +22,8 @@ public class TestController {
     private TestConfig testConfig;
 
     @GetMapping("/test")
-    public List<String> test() {
+    public List<String> test() throws InterruptedException {
+        Thread.sleep(7000L);
         return testConfig.getList();
     }
 }

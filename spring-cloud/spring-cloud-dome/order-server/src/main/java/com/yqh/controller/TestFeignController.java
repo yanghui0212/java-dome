@@ -25,8 +25,7 @@ public class TestFeignController {
     private GoodsServerFeign goodsServerFeign;
 
     @RequestMapping(value = "get", method = RequestMethod.GET)
-    public String feignGet() throws InterruptedException {
-        Thread.sleep(5000L);
+    public String feignGet() {
         return goodsServerFeign.feignGet();
     }
 

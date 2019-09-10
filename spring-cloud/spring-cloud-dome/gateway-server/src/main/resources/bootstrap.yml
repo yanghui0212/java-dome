@@ -9,6 +9,12 @@ spring:
       nodes: 127.0.0.1:6379
     password: 123456
     database: 4
+    lettuce:
+      pool:
+        max-active: 8
+        max-idle: 8
+#        min-idle: 1
+#        max-wait: 1000ms
   cloud:
     gateway:
       discovery:
