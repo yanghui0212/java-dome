@@ -1,47 +1,9 @@
 server:
-  port: 89
+  port: 80
 
 spring:
   application:
     name: gateway-server
-  redis:
-#    cluster:
-#      nodes: localhost:6379
-    host: 127.0.0.1
-    port: 6379
-    password: 123456
-    database: 4
-    lettuce:
-      pool:
-        max-active: 8
-        max-idle: 8
-
-  #        min-idle: 1
-  #        max-wait: 1000ms
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: false
-      routes:
-        - id: api-order
-          uri: lb://ORDER-SERVER
-          filters:
-            - StripPrefix=1
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率
-                redis-rate-limiter.burstCapacity: 5 #令牌桶总容量
-                key-resolver: "#{@ipKeyResolver}" #限流的键的解析器的 Bean 对象的名字
-          predicates:
-            - Path=/api-order/**
-        - id: api-goods
-          uri: lb://GOODS-SERVER
-          filters:
-            - StripPrefix=1
-          predicates:
-            - Path=/api-goods/**
-
     config:
       enabled: true
       profile: test
@@ -55,19 +17,29 @@ spring:
         max-interval: 3000
         initial-interval: 2000
         multiplier: 1
-  rabbitmq:
-    addresses: 127.0.0.1:5672
-    username: guest
-    password: guest
-    virtual-host: /
-    listener:
-      simple:
-        acknowledge-mode: manual #\u7B7E\u6536\u6A21\u5F0F \u624B\u52A8\u7B7E\u6536
-        max-concurrency: 10 #\u6700\u5927\u5E76\u53D1
-        concurrency: 5 #\u57FA\u672C\u5E76\u53D1
-        prefetch: 1 #\u9650\u6D41\u7B56\u7565\uFF0C\u540C\u4E00\u65F6\u95F4\u53EA\u67091\u6761\u6D88\u606F\u53D1\u9001\u8FC7\u6765\u6D88\u8D39
-    publisher-confirms: true
-    publisher-returns: true
+    cloud:
+      gateway:
+        discovery:
+          locator:
+            enabled: false
+        routes:
+          - id: api-order
+            uri: lb://ORDER-SERVER
+            filters:
+              - StripPrefix=1
+              - name: RequestRateLimiter
+                args:
+                  redis-rate-limiter.replenishRate: 1 #令牌桶每秒填充平均速率
+                  redis-rate-limiter.burstCapacity: 5 #令牌桶总容量
+                  key-resolver: "#{@ipKeyResolver}" #限流的键的解析器的 Bean 对象的名字
+            predicates:
+              - Path=/api-order/**
+          - id: api-goods
+            uri: lb://GOODS-SERVER
+            filters:
+              - StripPrefix=1
+            predicates:
+              - Path=/api-goods/**
 
 eureka:
   instance:
@@ -80,10 +52,3 @@ eureka:
     service-url:
       defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
 
-hystrix:
-  command:
-    fallbackcmd:
-      execution:
-        isolation:
-          thread:
-            timeoutInMilliseconds: 5000

@@ -1,5 +1,6 @@
 server:
   port: 9393
+
 spring:
   application:
     name: config-server
@@ -48,10 +49,11 @@ management:
       show-details: always
 
 #日志配置
-logging:
+logging: #日志
   level:
-    org.springframework.web: TRACE
-    org.springframework.boot: INFO
+    org.springframework.web: DEBUG
+    org.springframework.boot: DEBUG
+    org.springframework.cloud: DEBUG
   file: logs/${spring.application.name}.log
   file.max-size: 100MB
   file.max-history: 7

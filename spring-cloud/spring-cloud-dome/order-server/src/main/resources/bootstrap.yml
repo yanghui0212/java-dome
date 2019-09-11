@@ -1,5 +1,5 @@
 server:
-  port: 48081
+  port: 68080
 
 spring:
   application:
@@ -18,19 +18,6 @@ spring:
         max-interval: 3000
         initial-interval: 2000
         multiplier: 1
-  rabbitmq:
-    addresses: 127.0.0.1:5672
-    username: guest
-    password: guest
-    virtual-host: /
-    listener:
-      simple:
-        acknowledge-mode: manual #签收模式 手动签收
-        max-concurrency: 10 #最大并发
-        concurrency: 5 #基本并发
-        prefetch: 1 #限流策略，同一时间只有1条消息发送过来消费
-    publisher-confirms: true
-    publisher-returns: true
 
 eureka:
   instance:
@@ -42,5 +29,3 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
-
-
