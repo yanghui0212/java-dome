@@ -21,6 +21,7 @@
 *.iml
 .idea
 .vertx
+*.gz
 .settings/
 **/target/
 **/dist/
