@@ -11,6 +11,7 @@
     <groupId>com.yql</groupId>
     <artifactId>common</artifactId>
     <version>0.0.1</version>
+    <packaging>jar</packaging>
     <name>common</name>
     <description>公用组件</description>
 
@@ -21,5 +22,5 @@
     <dependencies>
 
     </dependencies>
-    
+
 </project>
