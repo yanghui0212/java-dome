@@ -14,7 +14,7 @@ spring:
           default-label: master
           basedir: D:\\java\\config-repo
   rabbitmq:
-    addresses: 127.0.0.1:5672
+    addresses: 192.168.1.104:5672
     username: guest
     password: guest
     virtual-host: /
