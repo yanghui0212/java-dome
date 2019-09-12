@@ -20,7 +20,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Slf4j
-public class DubboSampleProductorApplicationTests {
+public class ProducerAppTests {
 
     @Test
     public void contextLoads() {
