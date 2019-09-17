@@ -1,3 +1,7 @@
+virtual:
+  machine:
+    ip: 10.134.240.116 #虚拟机地址
+
 server:
   port: 20000
 
