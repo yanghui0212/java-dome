@@ -18,7 +18,7 @@ spring:
           default-label: master
           basedir: D:\\java\\config-repo
   rabbitmq:
-    addresses: 192.168.1.104:5672
+    addresses: ${virtual.machine.ip}:5672
     username: guest
     password: guest
     virtual-host: /
@@ -40,7 +40,7 @@ eureka:
       user.password: admin
   client:
     service-url:
-      defaultZone: http://admin:admin@127.0.0.1:18761/eureka/
+      defaultZone: http://admin:admin@${virtual.machine.ip}:18761/eureka/
 
 management:
   endpoints:
