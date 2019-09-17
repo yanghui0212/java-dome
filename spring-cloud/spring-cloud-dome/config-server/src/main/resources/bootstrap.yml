@@ -16,7 +16,7 @@ spring:
           username: yangqianghui1993@gmail.com
           password: 123456qqWW@@
           default-label: master
-          basedir: D:\\java\\config-repo
+          basedir: /logs/config-repo
   rabbitmq:
     addresses: ${virtual.machine.ip}:5672
     username: guest
@@ -40,7 +40,7 @@ eureka:
       user.password: admin
   client:
     service-url:
-      defaultZone: http://admin:admin@${virtual.machine.ip}:18761/eureka/
+      defaultZone: http://admin:admin@${virtual.machine.ip:eureka-server}:18761/eureka/
 
 management:
   endpoints:
