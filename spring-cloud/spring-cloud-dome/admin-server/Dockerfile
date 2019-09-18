@@ -1,5 +1,7 @@
 #基础镜像：仓库是java，tag是8
 FROM openjdk:8u222-slim
+#维护者信息
+MAINTAINER yangqianghui yangqianghui@hotmail
 #将打包好的spring程序拷贝到容器中的指定位置
 ADD target/admin-server-0.0.1.jar app.jar
 #容器对外暴露20000端口

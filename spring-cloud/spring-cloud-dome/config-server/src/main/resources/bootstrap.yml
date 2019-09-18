@@ -35,7 +35,6 @@ eureka:
   instance:
     appname: config-server
     prefer-ip-address: true
-    ip-address: 10.134.240.116
     metadata-map:
       user.name: admin
       user.password: admin
