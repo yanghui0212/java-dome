@@ -1,6 +1,6 @@
-virtual:
-  machine:
-    ip: 10.134.240.116 #虚拟机地址
+#virtual:
+#  machine:
+#    ip: 10.134.240.116 #虚拟机地址
 
 server:
   port: 9393
@@ -18,7 +18,7 @@ spring:
           default-label: master
           basedir: /logs/config-repo
   rabbitmq:
-    addresses: ${virtual.machine.ip}:5672
+    addresses: ${virtual.machine.ip:rabbitmq-server}:5672
     username: guest
     password: guest
     virtual-host: /
@@ -35,6 +35,7 @@ eureka:
   instance:
     appname: config-server
     prefer-ip-address: true
+    ip-address: 10.134.240.116
     metadata-map:
       user.name: admin
       user.password: admin
