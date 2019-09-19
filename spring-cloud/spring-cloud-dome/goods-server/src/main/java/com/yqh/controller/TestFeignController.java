@@ -17,12 +17,12 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestFeignController {
     @RequestMapping(value = "get", method = RequestMethod.GET)
-    public ResultDto<String> feignGet() {
+    public ResultDto feignGet() {
         return ResultDtoFactory.build("get");
     }
 
     @RequestMapping(value = "post", method = RequestMethod.POST)
-    public ResultDto<String> feignPost(@RequestBody String value) {
+    public ResultDto feignPost(@RequestBody String value) {
         log.info(value);
         return ResultDtoFactory.build("post");
     }

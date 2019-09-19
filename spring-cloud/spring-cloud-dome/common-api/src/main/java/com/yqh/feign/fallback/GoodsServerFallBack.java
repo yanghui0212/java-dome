@@ -20,12 +20,12 @@ public class GoodsServerFallBack implements FallbackFactory<GoodsServerFeign> {
     public GoodsServerFeign create(Throwable throwable) {
         return new GoodsServerFeign() {
             @Override
-            public ResultDto<String> feignGet() {
+            public ResultDto feignGet() {
                 return ResultDtoFactory.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
             }
 
             @Override
-            public ResultDto<String> feignPost(String str) {
+            public ResultDto feignPost(String str) {
                 return ResultDtoFactory.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
             }
         };

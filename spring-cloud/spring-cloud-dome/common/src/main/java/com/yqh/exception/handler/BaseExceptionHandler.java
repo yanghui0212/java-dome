@@ -34,7 +34,7 @@ import javax.servlet.http.HttpServletResponse;
 public class BaseExceptionHandler {
 
     @ExceptionHandler(value = BaseException.class)
-    public ResultDto<String> exception(Exception ex, HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public ResultDto exception(Exception ex, HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (ex instanceof BaseException) {
             log.error("发送异常：", ex);
             return baseExceptionInternal(HttpStatus.INTERNAL_SERVER_ERROR, ex, request, response);
@@ -43,7 +43,7 @@ public class BaseExceptionHandler {
         }
     }
 
-    private ResultDto<String> baseExceptionInternal(HttpStatus badRequest, Exception ex, HttpServletRequest req, HttpServletResponse res) {
+    private ResultDto baseExceptionInternal(HttpStatus badRequest, Exception ex, HttpServletRequest req, HttpServletResponse res) {
         res.setStatus(badRequest.value());
         ResultDto result = new ResultDto();
         result.setCode(badRequest.value());
@@ -53,7 +53,7 @@ public class BaseExceptionHandler {
     }
 
     @ExceptionHandler(value = Exception.class)
-    public ResultDto<String> otherException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
+    public ResultDto otherException(Exception ex, HttpServletRequest request, HttpServletResponse response) {
         log.error("发送异常：", ex);
         HttpStatus status;
         if (ex instanceof HttpRequestMethodNotSupportedException) {

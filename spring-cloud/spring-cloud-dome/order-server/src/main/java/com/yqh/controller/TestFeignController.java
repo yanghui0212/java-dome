@@ -26,12 +26,12 @@ public class TestFeignController {
     private GoodsServerFeign goodsServerFeign;
 
     @RequestMapping(value = "get", method = RequestMethod.GET)
-    public ResultDto<String> feignGet() {
+    public ResultDto feignGet() {
         return goodsServerFeign.feignGet();
     }
 
     @RequestMapping(value = "post", method = RequestMethod.POST)
-    public ResultDto<String> feignPost(@RequestBody String value) {
+    public ResultDto feignPost(@RequestBody String value) {
         return goodsServerFeign.feignPost(value);
     }
 }

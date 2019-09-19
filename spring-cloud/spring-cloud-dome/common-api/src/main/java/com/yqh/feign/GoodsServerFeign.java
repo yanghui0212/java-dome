@@ -21,7 +21,7 @@ public interface GoodsServerFeign {
      * @return
      */
     @RequestMapping(value = "/feign/get", method = RequestMethod.GET)
-    ResultDto<String> feignGet();
+    ResultDto feignGet();
 
     /***
      * 测试feign post方法
@@ -29,5 +29,5 @@ public interface GoodsServerFeign {
      * @return
      */
     @RequestMapping(value = "/feign/post", method = RequestMethod.POST)
-    ResultDto<String> feignPost(@RequestBody String str);
+    ResultDto feignPost(@RequestBody String str);
 }
