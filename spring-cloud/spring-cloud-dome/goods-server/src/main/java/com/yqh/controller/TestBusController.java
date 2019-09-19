@@ -1,13 +1,10 @@
 package com.yqh.controller;
 
-import com.yqh.service.TestService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.List;
 
 /**
  * @author yangq
@@ -15,20 +12,13 @@ import java.util.List;
  */
 @RestController
 @RefreshScope
-public class TestController {
+@RequestMapping("/bus")
+public class TestBusController {
 
     @Value("${from.config}")
     private String fromConfig;
 
-    @Autowired
-    private TestService testService;
-
-    @GetMapping("/test")
-    public List<String> test() {
-        return testService.test();
-    }
-
-    @GetMapping("/test/config")
+    @GetMapping("/config")
     public String testConfig() throws InterruptedException {
         Thread.sleep(6000L);
         return fromConfig;

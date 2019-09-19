@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("feign")
 @Slf4j
-public class TestFeignController {
+public class TestFeignResource {
     @RequestMapping(value = "get", method = RequestMethod.GET)
     public ResultDto feignGet() {
         return ResultDtoFactory.build("get");

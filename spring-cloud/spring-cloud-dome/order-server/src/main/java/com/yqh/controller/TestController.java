@@ -1,6 +1,8 @@
 package com.yqh.controller;
 
 import com.yqh.config.TestConfig;
+import com.yqh.dto.ResultDto;
+import com.yqh.util.ResultDtoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,7 +25,13 @@ public class TestController {
 
     @GetMapping("/test")
     public List<String> test() throws InterruptedException {
-        Thread.sleep(7000L);
+        Thread.sleep(4000L);
         return testConfig.getList();
+    }
+
+    @GetMapping("/get")
+    public ResultDto getResultDto() throws InterruptedException {
+        Thread.sleep(4000L);
+        return ResultDtoFactory.build(testConfig.getList());
     }
 }
