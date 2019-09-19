@@ -6,5 +6,7 @@ MAINTAINER yangqianghui yangqianghui@hotmail
 ADD target/admin-server-0.0.1.jar app.jar
 #容器对外暴露20000端口
 EXPOSE 20000
+#指定环境变量
+ENV JAVA_OPTS="-Deureka.instance.ip-address=10.134.240.116"
 #容器启动后需要执行的命令
 ENTRYPOINT [ "sh", "-c", "java $JAVA_OPTS -Djava.security.egd=file:/dev/./urandom -jar app.jar"]
