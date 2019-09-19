@@ -9,10 +9,9 @@ import lombok.Getter;
 @Getter
 public enum ExceptionEnum {
 
-
-    SERVER_400_EXCEPTION(400, "xxx"),
+    SERVER_400_EXCEPTION(400, "服务器异常！"),
+    SERVER_500_EXCEPTION(500, "服务器开小差！"),
     ;
-
 
     private Integer code;
     private String message;

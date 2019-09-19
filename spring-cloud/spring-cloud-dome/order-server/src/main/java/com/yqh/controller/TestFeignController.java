@@ -1,5 +1,6 @@
 package com.yqh.controller;
 
+import com.yqh.dto.ResultDto;
 import com.yqh.feign.GoodsServerFeign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,12 +26,12 @@ public class TestFeignController {
     private GoodsServerFeign goodsServerFeign;
 
     @RequestMapping(value = "get", method = RequestMethod.GET)
-    public String feignGet() {
+    public ResultDto<String> feignGet() {
         return goodsServerFeign.feignGet();
     }
 
     @RequestMapping(value = "post", method = RequestMethod.POST)
-    public String feignPost(@RequestBody String value) {
+    public ResultDto<String> feignPost(@RequestBody String value) {
         return goodsServerFeign.feignPost(value);
     }
 }

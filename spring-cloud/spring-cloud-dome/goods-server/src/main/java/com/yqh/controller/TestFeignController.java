@@ -1,5 +1,7 @@
 package com.yqh.controller;
 
+import com.yqh.dto.ResultDto;
+import com.yqh.util.ResultDtoFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,13 +17,13 @@ import org.springframework.web.bind.annotation.RestController;
 @Slf4j
 public class TestFeignController {
     @RequestMapping(value = "get", method = RequestMethod.GET)
-    public String feignGet() {
-        return "get";
+    public ResultDto<String> feignGet() {
+        return ResultDtoFactory.build("get");
     }
 
     @RequestMapping(value = "post", method = RequestMethod.POST)
-    public String feignPost(@RequestBody String value) {
+    public ResultDto<String> feignPost(@RequestBody String value) {
         log.info(value);
-        return "POST";
+        return ResultDtoFactory.build("post");
     }
 }

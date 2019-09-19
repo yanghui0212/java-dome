@@ -9,10 +9,10 @@
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>com.yqh</groupId>
-    <artifactId>common</artifactId>
+    <artifactId>common-api</artifactId>
     <version>0.0.1</version>
     <packaging>jar</packaging>
-    <name>common</name>
+    <name>common-api</name>
     <description>公用组件</description>
 
     <properties>
@@ -21,8 +21,9 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
+            <groupId>com.yqh</groupId>
+            <artifactId>common</artifactId>
+            <version>0.0.1</version>
         </dependency>
         <!-- netflix 服务熔断 -->
         <dependency>
@@ -36,7 +37,7 @@
         </dependency>
     </dependencies>
     <build>
-        <finalName>common</finalName>
+        <finalName>common-api</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
