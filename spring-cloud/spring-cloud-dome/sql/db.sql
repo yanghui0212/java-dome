@@ -68,3 +68,18 @@ CREATE TABLE `t_order_goods`  (
 ) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 SET FOREIGN_KEY_CHECKS = 1;
+
+
+CREATE TABLE `t_user` (
+                          `id` bigint(20) NOT NULL,
+                          `created_by` varchar(255) DEFAULT '',
+                          `creation_time` datetime DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+                          `last_update_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+                          `remark` varchar(255) DEFAULT '',
+                          `updated_by` varchar(255) DEFAULT '',
+                          `version` bigint(20) DEFAULT '0',
+                          `user_name` varchar(20) NOT NULL COMMENT '用户名',
+                          `user_password` varchar(100) NOT NULL COMMENT '用户密码',
+                          `pin` varchar(20) DEFAULT '' COMMENT '用户pin',
+                          PRIMARY KEY (`id`) USING BTREE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC;
