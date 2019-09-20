@@ -16,7 +16,7 @@ spring:
           username: yangqianghui1993@gmail.com
           password: 123456qqWW@@
           default-label: master
-          basedir: /logs/config-repo
+          basedir: /config-repo
   rabbitmq:
     addresses: ${virtual.machine.ip:rabbitmq-server}:5672
     username: guest
