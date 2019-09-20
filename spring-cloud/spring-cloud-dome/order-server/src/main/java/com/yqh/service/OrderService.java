@@ -1,6 +1,7 @@
 package com.yqh.service;
 
 import com.yqh.dto.OrderDto;
+import com.yqh.enums.OrderStatusEnum;
 import com.yqh.mapper.OrderMapper;
 import com.yqh.mapper.model.OrderModel;
 import com.yqh.util.Snowflake;
@@ -27,10 +28,11 @@ public class OrderService {
     @Transactional(rollbackFor = Exception.class)
     public OrderModel save(OrderDto orderDto) {
         OrderModel model = new OrderModel();
-        model.setId(snowflake.nextId());
-        model.setOrderStatus("wait");
-        model.setOrderNumber("xxxx");
-        model.setUserId(snowflake.nextId());
+        long orderId = snowflake.nextId();
+        model.setId(orderId);
+        model.setOrderStatus(OrderStatusEnum.WAIT_PAY.getCode());
+        model.setOrderNumber(String.valueOf(orderId));
+        model.setUserId(orderDto.getUserId());
         model.setRemark(orderDto.getRemark());
         orderMapper.insert(model);
         redisTemplate.opsForValue().set(String.valueOf(model.getId()), model);

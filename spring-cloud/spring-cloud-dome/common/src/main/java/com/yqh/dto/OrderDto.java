@@ -1,8 +1,11 @@
 package com.yqh.dto;
 
+import com.google.common.collect.Lists;
 import com.yqh.dto.base.BaseDto;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+
+import java.util.List;
 
 /**
  * @author yangq
@@ -25,4 +28,9 @@ public class OrderDto extends BaseDto {
      * 订单状态
      */
     private String orderStatus;
+
+    /**
+     * 包含的商品信息
+     */
+    private List<GoodsDto> goods = Lists.newArrayList();
 }

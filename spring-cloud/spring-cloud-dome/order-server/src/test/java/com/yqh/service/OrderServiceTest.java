@@ -23,6 +23,7 @@ public class OrderServiceTest extends OrderServerTests {
     @Test
     public void save() {
         OrderDto dto = new OrderDto();
+        dto.setUserId(12456L);
         orderService.save(dto);
     }
 }
