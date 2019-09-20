@@ -1,0 +1,37 @@
+virtual:
+  machine:
+    ip: 10.134.240.116 #虚拟机地址
+
+server:
+  port: 18080
+
+spring:
+  application:
+    name: user-server
+  cloud:
+    config:
+      enabled: true
+      profile: test
+      label: master
+      discovery:
+        service-id: CONFIG-SERVER
+        enabled: true
+      fail-fast: true
+      retry:
+        max-attempts: 6
+        max-interval: 3000
+        initial-interval: 2000
+        multiplier: 1
+
+eureka:
+  instance:
+    appname: user-server
+    prefer-ip-address: true
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+      defaultZone: http://admin:admin@${virtual.machine.ip}:18761/eureka/
+
+

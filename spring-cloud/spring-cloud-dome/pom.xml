@@ -32,6 +32,7 @@
         <module>admin-server</module>
         <module>order-server</module>
         <module>goods-server</module>
+        <module>user-server</module>
         <module>zuul-server</module>
         <module>gateway-server</module>
     </modules>
