@@ -1,9 +1,8 @@
 package com.yqh.controller;
 
-import com.yqh.config.TestConfig;
-import com.yqh.dto.ResultDto;
+import com.google.common.collect.Lists;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.util.ResultDtoFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -20,18 +19,15 @@ import java.util.List;
 @RefreshScope
 public class TestController {
 
-    @Autowired
-    private TestConfig testConfig;
-
     @GetMapping("/test")
     public List<String> test() throws InterruptedException {
         Thread.sleep(4000L);
-        return testConfig.getList();
+        return Lists.newArrayList("123", "222");
     }
 
     @GetMapping("/get")
     public ResultDto getResultDto() throws InterruptedException {
         Thread.sleep(4000L);
-        return ResultDtoFactory.build(testConfig.getList());
+        return ResultDtoFactory.build(Lists.newArrayList("123", "222"));
     }
 }

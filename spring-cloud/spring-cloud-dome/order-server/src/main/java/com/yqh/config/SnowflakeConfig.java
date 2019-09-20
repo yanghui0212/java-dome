@@ -1,6 +1,6 @@
 package com.yqh.config;
 
-import com.yqh.dto.SnowflakeConfigDto;
+import com.yqh.dto.base.SnowflakeConfigDto;
 import com.yqh.util.Snowflake;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

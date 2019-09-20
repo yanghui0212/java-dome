@@ -2,7 +2,6 @@ package com.yqh.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.yqh.mapper.model.OrderModel;
-import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
 
@@ -12,6 +11,10 @@ import java.util.List;
  */
 public interface OrderMapper extends BaseMapper<OrderModel> {
 
-    @Select("select * from t_order")
+    /**
+     * 查询所有订单
+     *
+     * @return
+     */
     List<OrderModel> selectAll();
 }

@@ -2,7 +2,7 @@ package com.yqh.service;
 
 import com.google.common.collect.Lists;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.enums.ResultErrorEnum;
 import com.yqh.util.ResultDtoFactory;
 import org.springframework.beans.factory.annotation.Autowired;

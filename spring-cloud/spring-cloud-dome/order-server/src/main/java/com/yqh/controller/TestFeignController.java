@@ -1,6 +1,6 @@
 package com.yqh.controller;
 
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.feign.GoodsServerFeign;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

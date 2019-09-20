@@ -1,6 +1,6 @@
 package com.yqh.exception.handler;
 
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.exception.BaseException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.ConversionNotSupportedException;

@@ -1,11 +1,10 @@
 package com.yqh.mapper.model;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
+import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 /**
  * @author yangq
@@ -13,26 +12,26 @@ import javax.persistence.Table;
  */
 @Data
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "t_order")
+@TableName("t_order")
 public class OrderModel extends BaseModel {
 
-    @Id
+    @TableId
     private Long id;
 
     /**
      * 所属用户
      */
-    @Column(name = "user_id")
+    @TableField("user_id")
     private Long userId;
     /**
      * 订单号
      */
-    @Column(name = "order_number")
+    @TableField("order_number")
     private String orderNumber;
     /**
      * 订单状态
      */
-    @Column(name = "order_status")
+    @TableField("order_status")
     private String orderStatus;
 
 }

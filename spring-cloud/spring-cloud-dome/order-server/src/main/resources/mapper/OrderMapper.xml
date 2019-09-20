@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yqh.mapper.OrderMapper">
+
+    <select id="selectAll" resultType="com.yqh.mapper.model.OrderModel">
+        select *
+        from `schema-order`.t_order
+    </select>
+</mapper>

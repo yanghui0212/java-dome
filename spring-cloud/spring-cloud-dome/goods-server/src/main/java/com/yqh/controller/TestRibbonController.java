@@ -1,6 +1,6 @@
 package com.yqh.controller;
 
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;

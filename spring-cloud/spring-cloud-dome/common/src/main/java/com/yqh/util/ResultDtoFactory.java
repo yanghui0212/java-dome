@@ -1,6 +1,6 @@
 package com.yqh.util;
 
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.enums.ResultErrorEnum;
 
 /**

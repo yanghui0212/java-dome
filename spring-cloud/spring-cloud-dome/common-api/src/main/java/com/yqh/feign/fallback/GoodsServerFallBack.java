@@ -1,6 +1,6 @@
 package com.yqh.feign.fallback;
 
-import com.yqh.dto.ResultDto;
+import com.yqh.dto.base.ResultDto;
 import com.yqh.enums.ResultErrorEnum;
 import com.yqh.feign.GoodsServerFeign;
 import com.yqh.util.ResultDtoFactory;

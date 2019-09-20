@@ -33,3 +33,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@${virtual.machine.ip}:18761/eureka/
+
+

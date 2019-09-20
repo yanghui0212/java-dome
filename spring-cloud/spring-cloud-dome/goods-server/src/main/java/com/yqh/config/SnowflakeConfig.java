@@ -1,13 +1,15 @@
 package com.yqh.config;
 
-import com.yqh.dto.SnowflakeConfigDto;
+import com.yqh.dto.base.SnowflakeConfigDto;
 import com.yqh.util.Snowflake;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 /**
- * @author yangq
+ * id生成器
+ *
+ * @author yangqh
  * Create time in 2019-09-19 18:27
  */
 @Configuration

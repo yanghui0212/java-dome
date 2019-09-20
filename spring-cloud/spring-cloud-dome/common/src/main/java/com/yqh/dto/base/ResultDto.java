@@ -1,4 +1,4 @@
-package com.yqh.dto;
+package com.yqh.dto.base;
 
 import lombok.Data;
 
