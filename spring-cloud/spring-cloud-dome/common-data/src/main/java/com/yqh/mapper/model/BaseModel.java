@@ -1,5 +1,6 @@
 package com.yqh.mapper.model;
 
+import com.baomidou.mybatisplus.annotation.FieldFill;
 import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
@@ -13,22 +14,22 @@ import java.util.Date;
 @Data
 public class BaseModel {
 
-    @TableField("creation_time")
+    @TableField(value = "creation_time")
     private Date creationTime;
 
-    @TableField("last_update_time")
+    @TableField(value = "last_update_time")
     private Date lastUpdateTime;
 
-    @TableField("created_by")
+    @TableField(value = "created_by", fill = FieldFill.INSERT)
     private String createdBy;
 
-    @TableField("updated_by")
+    @TableField(value = "updated_by", fill = FieldFill.INSERT_UPDATE)
     private String updatedBy;
 
-    @TableField("remark")
+    @TableField(value = "remark")
     private String remark;
 
-    @TableField("version")
+    @TableField(value = "version")
     @Version
     private Long version;
 }
