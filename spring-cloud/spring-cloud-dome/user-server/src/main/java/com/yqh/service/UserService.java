@@ -1,5 +1,9 @@
 package com.yqh.service;
 
+import com.auth0.jwt.JWT;
+import com.auth0.jwt.algorithms.Algorithm;
+import com.google.common.base.Charsets;
+import com.google.gson.Gson;
 import com.yqh.dto.UserDto;
 import com.yqh.enums.ExceptionEnum;
 import com.yqh.exception.BaseException;
@@ -7,6 +11,7 @@ import com.yqh.mapper.UserMapper;
 import com.yqh.mapper.model.UserModel;
 import com.yqh.util.Snowflake;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
@@ -32,6 +37,8 @@ public class UserService {
     private Snowflake snowflake;
     @Autowired
     private RedisTemplate<String, Object> redisTemplate;
+    @Autowired
+    private Gson gson;
 
     @Transactional(rollbackFor = Exception.class)
     public UserDto register(UserDto userDto) {
@@ -49,17 +56,18 @@ public class UserService {
     }
 
     @Transactional(rollbackFor = Exception.class, readOnly = true)
-    public UserDto login(UserDto userDto, HttpServletRequest request, HttpServletResponse response) {
+    public String login(UserDto userDto, HttpServletRequest request, HttpServletResponse response) {
         UserModel userModel = userMapper.selectByUserName(userDto.getUserName());
         if (nonNull(userModel)) {
             if (userDto.getPassword().equals(userModel.getPassword())) {
-                String redisKey = "user:login:" + userModel.getId();
-                redisTemplate.opsForValue().set(redisKey, userModel);
-                response.setHeader("user", redisKey);
-                Cookie cookie = new Cookie("user", redisKey);
-                cookie.setPath("/");
-                response.addCookie(cookie);
-                return userDto;
+                String sub = gson.toJson(userModel);
+                String token = JWT.create()
+                        .withSubject(sub)
+                        .sign(Algorithm.HMAC256(userModel.getPassword()));
+                String header = DigestUtils.md5Hex(sub.getBytes(Charsets.UTF_8));
+                String redisKey = "user:login:" + header;
+                redisTemplate.opsForValue().set(redisKey, token);
+                return redisKey;
             } else {
                 throw new BaseException(ExceptionEnum.PASSWORD_ERROR_EXCEPTION);
             }
