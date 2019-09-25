@@ -31,5 +31,7 @@
      运行自定义镜像
      eureka: docker run --privileged=true --name eureka -p 18761:18761 -v /data/java/logs/eureka:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Duser.timezone=GMT+08"  -d eureka:18761
      config: docker run --privileged=true --name config -p 9393:9393 -v /data/java/logs/config:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.131 -Duser.timezone=GMT+08"  --link eureka:eureka-server --link rabbit:rabbitmq-server  -d config:9393
+      admin: docker run --privileged=true --name admin -p 20000:20000 -v /data/java/logs/admin:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.131 -Duser.timezone=GMT+08"  --link eureka:eureka-server   -d 508c8725a114
+      turbine: docker run --privileged=true --name turbine -p 30000:30000 -v /data/java/logs/turbine:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.130 -Duser.timezone=GMT+08 -Dvirtual.machine.ip=192.168.163.131"  -d 0e5a0ea1fa60
 
   ## 4.vertx
