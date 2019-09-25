@@ -19,7 +19,7 @@ eureka:
       defaultZone: http://admin:admin@${virtual.machine.ip:eureka-server}:18761/eureka/
 #turbine \u805A\u5408\u76D1\u63A7
 turbine:
-  app-config: boot-admin-server #\u6307\u5B9A\u9700\u8981\u6536\u96C6\u4FE1\u606F\u7684\u670D\u52A1\u540D\u79F0
+  app-config: GOODS-SERVER,ORDER-SERVER #\u6307\u5B9A\u9700\u8981\u6536\u96C6\u4FE1\u606F\u7684\u670D\u52A1\u540D\u79F0
   cluster-name-expression: new String('default') #\u6307\u5B9A\u670D\u52A1\u6240\u5C5E\u96C6\u7FA4
   combine-host-port: true #\u4EE5\u4E3B\u673A\u540D\u548C\u7AEF\u53E3\u53F7\u6765\u533A\u5206\u670D\u52A1
 

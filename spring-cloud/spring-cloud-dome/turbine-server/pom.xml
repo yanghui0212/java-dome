@@ -34,6 +34,11 @@
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
         </dependency>
+        <!-- hystrix监控  -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+        </dependency>
     </dependencies>
 
     <build>
