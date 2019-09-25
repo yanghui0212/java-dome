@@ -1,0 +1,34 @@
+#virtual:
+#  machine:
+#    ip: 192.168.163.131 #\u865A\u62DF\u673A\u5730\u5740 docker \u90E8\u7F72\u6CE8\u91CA\u6389\u8FD9\u4E2A\u914D\u7F6E\uFF0C\u672C\u5730\u90E8\u7F72\u4FDD\u7559\u8FD9\u4E2A\u914D\u7F6E
+
+server:
+  port: 30000
+spring:
+  application:
+    name: turbine-server
+eureka:
+  instance:
+    appname: turbine-server
+    prefer-ip-address: true
+    metadata-map:
+      user.name: admin
+      user.password: admin
+  client:
+    service-url:
+      defaultZone: http://admin:admin@${virtual.machine.ip:eureka-server}:18761/eureka/
+#turbine \u805A\u5408\u76D1\u63A7
+turbine:
+  app-config: turbine-server #\u6307\u5B9A\u9700\u8981\u6536\u96C6\u4FE1\u606F\u7684\u670D\u52A1\u540D\u79F0
+  cluster-name-expression: new String('default') #\u6307\u5B9A\u670D\u52A1\u6240\u5C5E\u96C6\u7FA4
+  combine-host-port: true #\u4EE5\u4E3B\u673A\u540D\u548C\u7AEF\u53E3\u53F7\u6765\u533A\u5206\u670D\u52A1
+
+
+logging: #\u65E5\u5FD7
+  level:
+    org.springframework.web: INFO
+    org.springframework.boot: INFO
+    org.springframework.cloud: INFO
+  file: logs/${spring.application.name}.log
+  file.max-size: 100MB
+  file.max-history: 7

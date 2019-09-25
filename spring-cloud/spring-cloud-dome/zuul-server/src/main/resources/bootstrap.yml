@@ -1,6 +1,6 @@
 virtual:
   machine:
-    ip: 10.134.240.116 #虚拟机地址
+    ip: 192.168.163.131 #虚拟机地址
 
 server:
   port: 81

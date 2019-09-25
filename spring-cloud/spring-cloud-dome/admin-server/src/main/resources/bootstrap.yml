@@ -1,6 +1,6 @@
-virtual:
-  machine:
-    ip: 10.134.240.116 #虚拟机地址 docker 部署注释掉这个配置，本地部署保留这个配置
+#virtual:
+#  machine:
+#    ip: 192.168.163.131 #虚拟机地址 docker 部署注释掉这个配置，本地部署保留这个配置
 
 server:
   port: 20000
@@ -12,20 +12,6 @@ spring:
     user:
       name: admin
       password: admin
-  cloud:
-    config:
-      enabled: true
-      profile: test
-      label: master
-      discovery:
-        service-id: CONFIG-SERVER
-        enabled: true
-      fail-fast: true
-      retry:
-        max-attempts: 6
-        max-interval: 3000
-        initial-interval: 2000
-        multiplier: 1
 
 eureka:
   instance:
@@ -37,3 +23,22 @@ eureka:
   client:
     service-url:
       defaultZone: http://admin:admin@${virtual.machine.ip:eureka-server}:18761/eureka/
+#监控
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+      base-path: /actuator
+  endpoint:
+    health:
+      show-details: always
+#日志
+logging:
+  level:
+    org.springframework.web: INFO
+    org.springframework.boot: INFO
+    org.springframework.cloud: INFO
+  file: logs/${spring.application.name}.log
+  file.max-size: 100MB
+  file.max-history: 7

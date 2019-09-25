@@ -11,7 +11,7 @@
     1.2: docker部署config-server
         注意：eureka-server，rabbitmq不能直接写ip，必须写服务名，并且docker启动加参数，完整命令如下：  
                 
-        docker run --name fonfig -p 9393:9393 -v /logs:/data/logs -v /etc/localtime:/etc/localtime:ro  -e JAVA_OPTS="-Deureka.instance.ip-address=10.134.240.116"  --link eureka:eureka-server --link 59c341dd9614:rabbitmq-server  -d config-server:9393
+        docker run --name fonfig -p 9393:9393 -v /logs:/data/logs -v /etc/localtime:/etc/localtime:ro  -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.131"  --link eureka:eureka-server --link 59c341dd9614:rabbitmq-server  -d config-server:9393
      
         --name: 指定容器名称
         -p:端口映射
@@ -30,6 +30,6 @@
      
      运行自定义镜像
      eureka: docker run --privileged=true --name eureka -p 18761:18761 -v /data/java/logs/eureka:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Duser.timezone=GMT+08"  -d eureka:18761
-     config: docker run --privileged=true --name config -p 9393:9393 -v /data/java/logs/config:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=10.134.240.116 -Duser.timezone=GMT+08"  --link eureka:eureka-server --link rabbit:rabbitmq-server  -d config:9393
+     config: docker run --privileged=true --name config -p 9393:9393 -v /data/java/logs/config:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.131 -Duser.timezone=GMT+08"  --link eureka:eureka-server --link rabbit:rabbitmq-server  -d config:9393
 
   ## 4.vertx
