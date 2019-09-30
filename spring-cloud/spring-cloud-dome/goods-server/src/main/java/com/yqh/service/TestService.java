@@ -4,7 +4,6 @@ import com.google.common.collect.Lists;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.yqh.dto.base.ResultDto;
 import com.yqh.enums.ResultErrorEnum;
-import com.yqh.util.ResultDtoFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -36,6 +35,6 @@ public class TestService {
     }
 
     public ResultDto resultDtoFallback() {
-        return ResultDtoFactory.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
+        return ResultDto.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
     }
 }

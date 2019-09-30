@@ -4,7 +4,6 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.yqh.dto.base.ResultDto;
-import com.yqh.util.ResultDtoFactory;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -15,7 +14,7 @@ import lombok.extern.slf4j.Slf4j;
 public class MainTest {
 
     public static void main(String[] args) throws JsonProcessingException {
-        ResultDto result = ResultDtoFactory.build("xxxx");
+        ResultDto result = ResultDto.success("xxxx");
         log.info(new Gson().toJson(result));
         ObjectMapper mapper = new ObjectMapper();
         log.info(mapper.writeValueAsString(result));

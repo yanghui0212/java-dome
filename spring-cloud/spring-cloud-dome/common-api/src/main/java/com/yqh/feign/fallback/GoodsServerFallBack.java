@@ -3,7 +3,6 @@ package com.yqh.feign.fallback;
 import com.yqh.dto.base.ResultDto;
 import com.yqh.enums.ResultErrorEnum;
 import com.yqh.feign.GoodsServerFeign;
-import com.yqh.util.ResultDtoFactory;
 import feign.hystrix.FallbackFactory;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
@@ -21,12 +20,12 @@ public class GoodsServerFallBack implements FallbackFactory<GoodsServerFeign> {
         return new GoodsServerFeign() {
             @Override
             public ResultDto feignGet() {
-                return ResultDtoFactory.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
+                return ResultDto.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
             }
 
             @Override
             public ResultDto feignPost(String str) {
-                return ResultDtoFactory.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
+                return ResultDto.build(ResultErrorEnum.SERVER_HYSTRIX_ENUM);
             }
         };
     }

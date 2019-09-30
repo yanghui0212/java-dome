@@ -2,7 +2,6 @@ package com.yqh.controller;
 
 import com.google.common.collect.Lists;
 import com.yqh.dto.base.ResultDto;
-import com.yqh.util.ResultDtoFactory;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -28,6 +27,6 @@ public class TestController {
     @GetMapping("/get")
     public ResultDto getResultDto() throws InterruptedException {
         Thread.sleep(4000L);
-        return ResultDtoFactory.build(Lists.newArrayList("123", "222"));
+        return ResultDto.success(Lists.newArrayList("123", "222"));
     }
 }
