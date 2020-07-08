@@ -22,12 +22,12 @@
         --privileged=true 授权
         
      docker运行：
-     redis：   docker run -d -p 6379:6379 --name redis --privileged=true  -v /data/redis/conf:/conf -v /data/redis/data:/data redis:4.0 redis-server --appendonly yes --requirepass "123456"
-     mysql:   docker run -p 3306:3306 --name mysql --privileged=true  -v /data/mysql/conf:/etc/mysql/conf.d -v /data/mysql/logs:/logs -v /data/mysql/data:/var/lib/mysql -v /etc/localtime:/etc/localtime:ro -e MYSQL_ROOT_PASSWORD=123456 -d docker.io/mysql:5.7.27
-     mongo:   docker run --name mongo --privileged=true  -p 27017:27017 -v /data/mongo/db:/data/db -d docker.io/mongo:4.0.12
-     rabbit:  docker run -d --privileged=true --name rabbit -p 15672:15672 -p 5672:5672 -v /data/rabbitmq:/var/lib/rabbitmq docker.io/rabbitmq:3.8-rc-management
-     zookeeper:   docker run --privileged=true -d --name zookeeper -p 2181:2181  -d docker.io/zookeeper:3.5.5 
-     
+     redis: docker run -d -p 6379:6379 --name redis --privileged=true  -v /data/redis/conf:/conf -v /data/redis/data:/data redis:4.0 redis-server --appendonly yes --requirepass "123456"
+     mysql: docker run -p 3306:3306 --name mysql --privileged=true  -v /data/mysql/conf:/etc/mysql/conf.d -v /data/mysql/logs:/logs -v /data/mysql/data:/var/lib/mysql -v /etc/localtime:/etc/localtime:ro -e MYSQL_ROOT_PASSWORD=123456 -d docker.io/mysql:5.7.27
+     mongo: docker run --name mongo --privileged=true  -p 27017:27017 -v /data/mongo/db:/data/db -d docker.io/mongo:4.0.12
+     rabbit: docker run -d --privileged=true --name rabbit -p 15672:15672 -p 5672:5672 -v /data/rabbitmq:/var/lib/rabbitmq docker.io/rabbitmq:3.8-rc-management
+     zookeeper: docker run --privileged=true -d --name zookeeper -p 2181:2181  -d docker.io/zookeeper:3.5.5 
+     zipkin: docker run -d --restart always -p 9411:9411 --name zipkin openzipkin/zipkin:latest
      运行自定义镜像
      eureka: docker run --privileged=true --name eureka -p 18761:18761 -v /data/java/logs/eureka:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Duser.timezone=GMT+08"  -d eureka:18761
      config: docker run --privileged=true --name config -p 9393:9393 -v /data/java/logs/config:/logs -v /etc/localtime:/etc/localtime:ro -e JAVA_OPTS="-Deureka.instance.ip-address=192.168.163.131 -Duser.timezone=GMT+08"  --link eureka:eureka-server --link rabbit:rabbitmq-server  -d config:9393
