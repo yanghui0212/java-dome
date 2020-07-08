@@ -8,6 +8,8 @@ server:
 spring:
   application:
     name: zuul-server
+  jmx:
+    enabled: false
   cloud:
     config:
       enabled: true
